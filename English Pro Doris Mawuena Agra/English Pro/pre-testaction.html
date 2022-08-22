@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-Tests</title>
+    <!-- <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="styles/tailwind.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <script type="text/javascript" src="scripts/jquery.min.js"></script>
+    <!-- <script src="Bootstrap/js/bootstrap.bundle.min.js"></script> -->
+    <script type="text/javascript">
+        let mediaRecorder
+        let audio
+        let audioCtx
+        let recordButton
+        let canvas
+        let canvasCtx
+        let timerDiv
+        let intervalId
+        let countDown = 50
+        function timer() {
+            if (intervalId) {
+                clearInterval(intervalId)
+            }
+            intervalId = setInterval(() => {
+                $(timerDiv).text(countDown + "s")
+                if (countDown-- <= 0) {
+                    clearInterval(intervalId)
+                    stop()
+                }
+            }, 1000)
+        }
+        function start() {
+            countDown = 50
+            mediaRecorder.start()
+            timer()
+        }
+        function stop() {
+            mediaRecorder.stop();
+            if (intervalId) {
+                clearInterval(intervalId)
+            }
+
+            if (!recordButton) return
+            const btn = $(recordButton)
+            btn.text("RECORD")
+            canvas = null
+            canvasCtx = null
+            btn.siblings().each((i, x) => x.remove())
+            audio = $("<audio controls></audio> ").appendTo(btn.parent())[0]
+            recordButton = null
+            btn.parent().next().removeClass("hidden")
+        }
+        function setupRecorder(){
+            if (navigator.mediaDevices.getUserMedia) {
+                const constraints = { audio: true }
+                let chunks = []
+
+                let onSuccess = function(stream){
+                    mediaRecorder = new MediaRecorder(stream)
+                    visualize(stream)
+                    mediaRecorder.onstop = function() {
+                        const blob = new Blob(chunks, { type: "audio/ogg; codecs=opus" })
+                        const audioUrl = window.URL.createObjectURL(blob)
+                        audio.src = audioUrl
+                        chunks = []
+                    }
+                    mediaRecorder.ondataavailable = function(e) {
+                        chunks.push(e.data)
+                    }
+                }
+
+                let onError = function(err){
+                    console.log("The following error occured: ", err) // todo: use alert
+                }
+
+                navigator.mediaDevices.getUserMedia(constraints).then(onSuccess, onError)
+            }
+        }
+
+        function visualize(stream) {
+            if(!audioCtx) {
+                audioCtx = new AudioContext();
+            }
+
+            const source = audioCtx.createMediaStreamSource(stream);
+
+            const analyser = audioCtx.createAnalyser();
+            analyser.fftSize = 2048;
+            const bufferLength = analyser.frequencyBinCount;
+            const dataArray = new Uint8Array(bufferLength);
+
+            source.connect(analyser);
+            //analyser.connect(audioCtx.destination);
+
+            draw()
+
+            function draw() {
+                if (!canvas) {
+                    requestAnimationFrame(draw);
+                    return
+                }
+                const WIDTH = canvas.width
+                const HEIGHT = canvas.height;
+
+                requestAnimationFrame(draw);
+
+                analyser.getByteTimeDomainData(dataArray);
+
+                canvasCtx.fillStyle = 'rgb(255, 255, 255)';
+                canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
+
+                canvasCtx.lineWidth = 2;
+                canvasCtx.strokeStyle = 'rgb(0, 0, 0)';
+
+                canvasCtx.beginPath();
+
+                let sliceWidth = WIDTH * 1.0 / bufferLength;
+                let x = 0;
+
+
+                for(let i = 0; i < bufferLength; i++) {
+
+                let v = dataArray[i] / 128.0;
+                let y = v * HEIGHT/2;
+
+                if(i === 0) {
+                    canvasCtx.moveTo(x, y);
+                } else {
+                    canvasCtx.lineTo(x, y);
+                }
+
+                x += sliceWidth;
+                }
+
+                canvasCtx.lineTo(canvas.width, canvas.height/2);
+                canvasCtx.stroke();
+
+            }
+            }
+        
+        function setupRecordButtons () {
+            $(".record-btn").click(function(e) {
+                if (recordButton) {
+                    $(recordButton)
+                        .siblings()
+                        .each((_, x) => x.remove())
+                    canvas = null
+                    canvasCtx = null
+                }
+                recordButton = this
+                const btn = $(this)
+                if (btn.text() !== "RECORD") { //already active
+                    stop()
+                    return
+                }
+                btn.text("STOP")
+                // clear any siblings
+                btn.siblings().each((i, x) => x.remove())
+                // add the visualizer
+                timerDiv = $('<div class="font-bold flex place-items-center p-1 text-red-500"></div>').appendTo(btn.parent())[0]
+                canvas = $(' <canvas class="border rounded-full h-12 visualizer" style="width: 400px" />').appendTo(btn.parent())[0]
+                canvasCtx = canvas.getContext("2d")
+                start ()
+            })
+        }
+        $(document).ready(() => {
+            setupRecorder()
+            setupRecordButtons()
+        })
+
+    </script>
+
+
+</head>
+
+<body>
+    <header>
+        <!--Navbar area-->
+        <nav class="navbar sticky-top navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="logo design.png"><img src="logo design.png" alt="project logo" width="80"
+                        height="40" class="d-inline-block align-text-center">
+                    English<span>PRO</span> </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+
+                </button>
+
+                <nav class="navbar sticky-top navbar-expand-lg">
+                    <div class="container">
+
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page"
+                                        href="English Pro index.html">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="English Pro About Us 1.html">About Us</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="books.html">Books</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="pre-testaction.html"> Pre-Tests</a>
+                                  </li>
+                                  <li class="nav-item">
+                                    <a class="nav-link" href="post-testaction.html"> Post-Tests</a>
+                                  </li>
+
+                                  <li class="nav-item">
+                                    <a class="nav-link" href="Resources.html" id="navbarDropdown" role="button"
+                                      data-bs-toggle="dropdown" aria-expanded="false">
+                                      Resources
+                                    </a>
+                                  </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-currssent="page" href="Contact Us.html">Contact
+                                        Us</a>
+                                </li>
+
+                                <form class="d-flex" role="search">
+                                    <input class="border form-control me-2" type="search" placeholder="Search"
+                                        aria-label="Search">
+                                </form>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </nav>
+
+        <!-- End of navbar -->
+    </header>
+
+    <!-- Header image section -->
+
+    <div style="background-image: url(girl\ happy\ to\ learn\ on\ computer.jpg); height: 400px; 
+    background-size: cover;background-repeat: no-repeat; background-position: center;">
+
+        <div class="d-flex justify-content-center align-items-center"
+            style="width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6)">
+        </div>
+    </div>
+
+
+    <section style="background-color: rgb(235, 235, 72) ;">
+        <div class="py-5">
+            <div class="container">
+                <div class="row">
+                    <h2 class="mb-6" style="text-align: center; font-style:inherit;">
+                        Beginner Class A
+                    </h2>
+
+                    <div class="col-md-6">
+                        <div class="card border-0" style="width:400px;">
+                            <div class="card-body">
+                                <h3 class="card-title">Enter Your Details</h3>
+                            </div>
+                            <div>
+                                <form style="padding-left:20px ; padding-bottom:20px">
+                                    <div id="name"></div>
+                                    <h4>First Name(s)</h4>
+                                    <input class="border firstname" type="text" name="first_name"><br>
+                                    <!-- <label class="firstlabel">First Name</label> -->
+                                    <h4> Last Name</h4>
+                                    <input class="border lastname" type="text" name="last_name"><br>
+                                    <!-- <label class="lastlabel">Last Name</label> -->
+
+                                    <h4 class="name">Age</h4>
+                                    <input class="border Age" type="text" name="Age">
+
+                                    <h4 class="name">Class</h4>
+                                    <input class="border Class" type="text" name="Class">
+
+                                    <div class="col-12" style="margin: 30px; padding-bottom: 30px;">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="card border-0" style="width: 600px;">
+                            <div class="card-body">
+                                <div>
+                                    <h4 class="name" style="text-align:center ;">Sounds of the English Alphabet</h4>
+                                    <p style="font-size: 20px ;">Mention these sounds on your screen. You have 50
+                                        seconds to mention all
+                                        sounds.
+                                    </p> <br>
+
+                                    <p style="font-size: 50px;">a b c d e f g h i j k l m <br>
+                                        n o p q r s t u v w x y z <br>
+                                    </p>
+
+
+
+                                    <p style="font: size 20px;">Tap the Record button below to record
+                                        yourself pronouncing the sounds</p>
+
+                                    <div class="flex gap-2">
+                                        <button class="record-btn" style="border: 2px solid rgb(245, 50, 50);
+                                            padding-top: 10px;padding-bottom: 10px;color:red;font-weight: bold;
+                                            width: 80px;margin-bottom: 10px;border-radius: 10px; align-content: left;
+                                            display: flex;flex-direction: column;text-align: center; align-items: center ;
+                                            justify-content: center;">RECORD</button>                                        
+                                    </div>
+
+                                    <p style="font-size: 20px;" class="hidden">Well done! <br>
+                                        Now listen to the correct pronunciation of these sounds.
+                                        How many did you get right? 
+                                        <span class="flex place-content-center">
+                                            <audio controls src="pretest/Pre-tests Beginner Class A.m4a" />
+                                        </span>
+                                    </p>
+                                </div>
+                                <!-- <p>Click <strong>here</strong> to see your results.</p> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <section style="background-color: rgb(140, 209, 155)  ;">
+        <div class="py-5">
+            <div class="container">
+                <div class="row">
+                    <h2 class="mb-6" style="text-align: center; font-style:inherit;">
+                        Beginner Class B
+                    </h2>
+
+                    <div class="col-md-6">
+                        <div class="card border-0" style="width:400px;">
+                            <div class="card-body">
+                                <h3 class="card-title">Enter Your Details</h3>
+                            </div>
+                            <div>
+                                <form style="padding-left:20px ; padding-bottom:20px">
+                                    <div id="name"></div>
+                                    <h4>First Name(s)</h4>
+                                    <input class="border firstname" type="text" name="first_name"><br>
+                                    <!-- <label class="firstlabel">First Name</label> -->
+                                    <h4> Last Name</h4>
+                                    <input class="border lastname" type="text" name="last_name"><br>
+                                    <!-- <label class="lastlabel">Last Name</label> -->
+
+                                    <h4 class="name">Age</h4>
+                                    <input class="border Age" type="text" name="Age">
+
+                                    <h4 class="name">Class</h4>
+                                    <input class="border Class" type="text" name="Class">
+
+                                    <div class="col-12" style="margin: 30px; padding-bottom: 30px;">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="card border-0" style="width: 600px;">
+                            <div class="card-body">
+                                <div>
+                                    <h4 class="name" style="text-align:center ;">Diagraphs</h4>
+                                    <p style="font-size: 20px ;">Mention these sounds on your screen. You have 50
+                                        seconds to mention all
+                                        sounds.
+                                    </p> <br>
+                                    <p style="font-size: 50px;">th, wh, sh, ch, ck<br>
+                                        gh, kn, mb, ng, ph, wr
+                                    </p>
+
+                                    <div class="flex gap-2">
+                                        <button class="record-btn" style="border: 2px solid rgb(245, 50, 50);
+                                            padding-top: 10px;padding-bottom: 10px;color:red;font-weight: bold;
+                                            width: 80px;margin-bottom: 10px;border-radius: 10px; align-content: left;
+                                            display: flex;flex-direction: column;text-align: center; align-items: center ;
+                                            justify-content: center;">RECORD</button>
+                                    </div>
+
+                                    <p style="font-size: 20px;" class="hidden">Well done! <br>
+                                        Now listen to the correct pronunciation of these sounds.
+                                        How many did you get right? 
+                                        <span class="flex place-content-center">
+                                            <audio controls src="pretest/Pre-tests Beginner Class B.m4a" />
+                                        </span>
+                                    </p>
+                                </div>
+                                <!-- <p>Click <strong>here</strong> to see your results.</p> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <section style="background-color:   rgb(186, 162, 250) ;">
+        <div class="py-5">
+            <div class="container">
+                <div class="row">
+                    <h2 class="mb-6" style="text-align: center; font-style:inherit;">
+                        Beginner Class C
+                    </h2>
+
+                    <div class="col-md-6">
+                        <div class="card border-0" style="width:400px;">
+                            <div class="card-body">
+                                <h3 class="card-title">Enter Your Details</h3>
+                            </div>
+                            <div>
+                                <form style="padding-left:20px ; padding-bottom:20px">
+                                    <div id="name"></div>
+                                    <h4>First Name(s)</h4>
+                                    <input class="border firstname" type="text" name="first_name"><br>
+                                    <!-- <label class="firstlabel">First Name</label> -->
+                                    <h4> Last Name</h4>
+                                    <input class="border lastname" type="text" name="last_name"><br>
+                                    <!-- <label class="lastlabel">Last Name</label> -->
+
+                                    <h4 class="name">Age</h4>
+                                    <input class="border Age" type="text" name="Age">
+
+                                    <h4 class="name">Class</h4>
+                                    <input class="border Class" type="text" name="Class">
+
+                                    <div class="col-12" style="margin: 30px; padding-bottom: 30px;">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="card border-0" style="width: 600px;">
+                            <div class="card-body">
+                                <div>
+                                    <h4 class="name" style="text-align:center ;">Diphthongs</h4>
+                                    <p style="font-size: 20px ;">Mention the words on your screen. You have 50 seconds
+                                        to mention all
+                                        sounds.
+                                    </p> <br>
+                                    <p style="font-size: 30px;">ate, name, main, nail, aim, lake<br>
+                                        goal, pole, oats, hope, toad, robe </p>
+
+                                    <div class="flex gap-2">
+                                        <button class="record-btn" style="border: 2px solid rgb(245, 50, 50);
+                                                padding-top: 10px;padding-bottom: 10px;color:red;font-weight: bold;
+                                                width: 80px;margin-bottom: 10px;border-radius: 10px; align-content: left;
+                                                display: flex;flex-direction: column;text-align: center; align-items: center ;
+                                                justify-content: center;">RECORD</button>
+                                    </div>
+
+                                    <p style="font-size: 20px;" class="hidden">Well done! <br>
+                                        Now listen to the correct pronunciation of these sounds.
+                                        How many did you get right? 
+                                        <span class="flex place-content-center">
+                                            <audio controls src="pretest/Pre-tests Beginner Class C.m4a" />
+                                        </span>
+                                    </p>
+                                </div>
+                                <!-- <p>Click <strong>here</strong> to see your results.</p> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <!-- Footer -->
+    <div>
+        <footer>
+          <div class="container">
+            <footer class="py-5">
+              <div class="row">
+                <div class="col-6 col-md-2 mb-3">
+                  <h5>Assessment</h5>
+                  <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="English Pro index.html" class="nav-link p-0 text-muted">Home</a></li>
+                    <li class="nav-item mb-2"><a href="pre-testaction.html" class="nav-link p-0 text-muted">Pre test</a>
+                    </li>
+                    <li class="nav-item mb-2"><a href="post-testaction.html" class="nav-link p-0 text-muted">Post test</a>
+                    </li>
+                    <li class="nav-item mb-2"><a href="Contact Us.html" class="nav-link p-0 text-muted">FAQs</a></li>
+                    <li class="nav-item mb-2"><a href="English Pro About Us 1.html" class="nav-link p-0 text-muted">About
+                        Us</a></li>
+                  </ul>
+                </div>
+    
+                <div class="col-6 col-md-2 mb-3">
+                  <h5>Resources</h5>
+                  <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="English Pro index.html" class="nav-link p-0 text-muted">Home</a></li>
+                    <li class="nav-item mb-2"><a href="books.html" class="nav-link p-0 text-muted">Books</a></li>
+                    <li class="nav-item mb-2"><a href="Resources.html" class="nav-link p-0 text-muted">Videos</a></li>
+                    <li class="nav-item mb-2"><a href="books.html" class="nav-link p-0 text-muted">Audio</a></li>
+                    <li class="nav-item mb-2"><a href="English Pro About Us 1.html" class="nav-link p-0 text-muted">About
+                        Us</a></li>
+                  </ul>
+                </div>
+    
+                <div class="col-6 col-md-2 mb-3">
+                  <h5>Main menu</h5>
+                  <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="English Pro index.html" class="nav-link p-0 text-muted">Home</a></li>
+                    <li class="nav-item mb-2"><a href="Resources.html" class="nav-link p-0 text-muted">Resources</a></li>
+                    <li class="nav-item mb-2"><a href="books.html" class="nav-link p-0 text-muted">Books</a></li>
+                    <li class="nav-item mb-2"><a href="pre-testaction.html"
+                        class="nav-link p-0 text-muted">Pre-Tests</a></li>
+                    <li class="nav-item mb-2"><a href="English Pro About Us 1.html" class="nav-link p-0 text-muted">About
+                        Us</a></li>
+                  </ul>
+                </div>
+    
+                <div class="col-md-5 offset-md-1 mb-3">
+                  <form>
+    
+                    <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+                      <label for="newsletter1" class="visually-hidden"> write here</label>
+                      <input id="newsletter1" type="text" class="form-control" placeholder="write here">
+                      <button class="btn btn-primary" type="button">Send us your questions</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+    
+              <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+                <p>English PRO© 2022 Company, Inc. All rights reserved.</p>
+                <ul class="list-unstyled d-flex">
+                  <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24">
+                        <use xlink:href="#twitter"></use>
+                      </svg></a></li>
+                  <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24">
+                        <use xlink:href="#instagram"></use>
+                      </svg></a></li>
+                  <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24">
+                        <use xlink:href="#facebook"></use>
+                      </svg></a></li>
+                </ul>
+              </div>
+            </footer>
+          </div>
+        </footer>
+      </div>
+    
+</body>
+
+</html>

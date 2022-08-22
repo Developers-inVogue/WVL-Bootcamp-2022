@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comapre prices of Food</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
+      <!-- Bootstrap Css -->
+      <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+      <!-- Bootstrap Js -->
+      <script src="bootstrap/js/bootstrap.bundle.js" defer></script>
+     <!-- Bootstrap icons-->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+          <!-- Core theme CSS (includes Bootstrap)-->
+          <link href="css/styles.css" rel="stylesheet" />
+</head>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,700;0,900;1,500;1,700&display=swap');
+
+body {
+    background-color: #DCDCDC;
+    margin: 0px;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.navbar {
+
+     width: 100vw;
+     height: 100px;
+     display: flex;
+     flex-direction: row;
+     align-items: center;
+     justify-items: center;
+     background-color: white;
+     overflow-x: hidden;
+}
+
+.logo {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    
+}
+
+.hero {
+    width: 100vw;
+    height: 50vh;
+    background-color: #40434e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    padding: 10px
+}
+
+.hero-title {
+    color: white;
+    font-weight: bolder;
+    font-size: 4rem;
+    text-align: center;
+    padding: 5px;
+    margin-top: 70px;
+}
+
+.hero-subtitle {
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 15px;
+    text-align: center;
+}
+
+.button {
+    padding: 20px;
+    background-color: white;
+    border-radius: 100px;
+    width: 100px;
+    height: auto;
+    text-align: center;
+    color: black;
+    text-decoration: none;
+    font-weight: bold
+}
+
+
+
+.breadcrumb {
+    margin-left: 150px;
+    margin-top: 50px
+}
+
+
+
+.grid-container {
+    margin-top: 20px;
+    display: grid;
+    grid-template-areas:
+      'menu main main main main';
+    gap: 10px;
+    padding: 10px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.category {
+    grid-area: menu;
+}
+
+.category-list {
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    list-style-type: none;
+}
+
+.category-type {
+    padding: 5px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+
+.category-link {
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    width: 300px;
+}
+
+.category-link:hover {
+    text-decoration: underline
+}
+
+.category-active {
+  font-weight: bolder;
+  text-decoration: none;
+  background-color: #175676;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+
+.main {
+    grid-area: main
+}
+
+.main-content {
+    background-color: white;
+    border-radius: 10px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.content-wrapper {
+    background-color: white;
+    padding: 20px
+}
+.content-component {
+       background-color: #FFFFFF;
+       border-radius: 15px;
+       padding: 35px;
+       display: flex;
+       flex-direction: column;
+       
+}
+
+.content-name {
+    font-weight: bolder;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 30px;
+}
+
+.content-price {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 8px;
+    font-size: 20px;
+}
+
+.content-link {
+    text-align: center;
+    text-decoration: none;
+    padding: 10px;
+    background-color: #175676;
+    color: white;
+    border-radius: 15px;
+    margin-top: 15px;
+    cursor: pointer;
+
+}
+
+.content-component:hover {
+    border: 1px solid red;
+}
+
+.content-link:hover {
+    background-color: red;
+}
+
+img {
+    width: 250px;
+    height: 200px;
+}
+
+</style>
+
+<body>
+
+    <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="index.2022.html">Price Controller</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.2022.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="Aboutus2022.html">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="store.html.html">Stores</a></li>
+                <li class="nav-item"><a class="nav-link" href="prices.html">Compare Prices</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="All categories.html">All Categories</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" href="popular items.html">Popular Items</a></li>
+                        <li><a class="dropdown-item" href="New items.html">New Arrivals</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+        </div>
+    </div>
+</nav>
+
+
+<!-- Header-->
+<header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">Price Controller</h1>
+            <p class="lead fw-normal text-white-50 mb-0">Get Quality, Compare Prices and Payless</p>
+        </div>
+    </div>
+</header>
+<!-- Header ends -->
+
+
+
+<section class="grid-container">
+
+    <div class="main">
+         <div class="content">
+            <h2>Comapre prices of your Food and Beverages here</h2>
+            <div class="main-content">
+               
+                <div class="content-wrapper">
+                <div class="content-component">
+                    <img src="images/ginger.jfif" alt="phone" class="img">
+                    <div class="content-name">Seasonings</div>
+                    <div class="content-price">GHS 8.99</div>
+                    <a href="#" class="content-link">Compare prices</a>  
+                </div>
+                </div>
+
+                <div class="content-wrapper">
+                    <div class="content-component">
+                        <img src="images/snacks.ships.jpeg" alt="phone" class="img">
+                        <div class="content-name">Snacks</div>
+                        <div class="content-price">Gh12.89</div>
+                        <a href="#" class="content-link">Compare prices</a>  
+                    </div>
+                    </div>
+
+                    <div class="content-wrapper">
+                        <div class="content-component">
+                            <img src="images/cannedfoog.jfif" alt="phone" class="img">
+                            <div class="content-name">Canned Food</div>
+                            <div class="content-price">GH 20.40</div>
+                            <a href="#" class="content-link">Compare prices</a>  
+                        </div>
+                    </div>
+
+                    <div class="content-wrapper">
+                        <div class="content-component">
+                            <img src="images/Nido.jpeg" alt="phone" class="img">
+                            <div class="content-name">Breakfast</div>
+                            <div class="content-price">GHS 14.88 - GHS 16.54</div>
+                            <a href="#" class="content-link">Compare prices</a>  
+                        </div>
+                    </div>
+
+                    <div class="content-wrapper">
+                        <div class="content-component">
+                            <img src="images/cindy.5kg.jfif" alt="phone" class="img">
+                            <div class="content-name"> Rice & complements</div>
+                            <div class="content-price">GHS 40.09</div>
+                            <a href="RICE.html" class="content-link">Compare prices</a>  
+                        </div>
+                    </div>
+
+                    
+                    <div class="content-wrapper">
+                        <div class="content-component">
+                            <img src="images/frytol.jfif" alt="phone" class="img">
+                            <div class="content-name"> cooking oil & Condiments</div>
+                            <div class="content-price">GHS 58.99</div>
+                            <a href="CookingOil Prices.html" class="content-link">Compare prices</a>  
+                        </div>
+                    </div>
+
+        
+            </div>
+         </div>
+    </div>
+</section>
+
+
+<script src="../js/script.js"></script>
+<!-- Footer-->
+<footer class="py-5 bg-dark">
+    <footer style="background-color: gainsboro;">
+     
+     <div class="container">
+       <footer class="py-5">
+         <div class="row">
+           <div class="col-6 col-md-2 mb-3">
+             <h5>Price Controller</h5>
+             <ul class="nav flex-column">
+               <li class="nav-item mb-2"><a href="index.2022.html" class="nav-link p-0 text-muted">Home</a></li>
+               <li class="nav-item mb-2"><a href="All categories.html" class="nav-link p-0 text-muted">All categories</a></li>
+               <li class="nav-item mb-2"><a href="prices.html" class="nav-link p-0 text-muted">Compare prices</a></li>
+               <li class="nav-item mb-2"><a href="contact.html" class="nav-link p-0 text-muted">FAQs</a></li>
+             </ul>
+           </div>
+     
+           <div class="col-6 col-md-2 mb-3">
+             <h5>Payament Methods</h5>
+             <ul class="nav flex-column">
+               <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Net Banking</a></li>
+               <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Cash on delivery</a></li>
+               <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Debit/Credit Card</a></li>
+             </ul>
+           </div>
+     
+           <div class="col-6 col-md-2 mb-3">
+             <h5>Contact Us</h5>
+             <ul class="nav flex-column">
+               <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">+233502906607</a></li>
+               <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">pricecontroller@gmail.com</a></li>
+               <li class="nav-item mb-2"><a href="Aboutus2022.html" class="nav-link p-0 text-muted">About Us</a></li>
+             </ul>
+           </div>
+     
+           <div class="col-md-5 offset-md-1 mb-3">
+             <form>
+               <h5>Subscribe to our Price tracker and online shopping place</h5>
+               <p>Contoller your expenses on each purchase.</p>
+               <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+                 <label for="newsletter1" class="visually-hidden">Email address</label>
+                 <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
+                 <button class="btn btn-primary" type="button">Subscribe</button>
+               </div>
+             </form>
+           </div>
+         </div>
+     
+         <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+           <p>© 2022 Price Controller. All Rights Reserved.</p>
+           <ul class="list-unstyled d-flex">
+             <li class="ms-3"><a class="link-dark" href="https://twitter.com/home"><svg class="bi" width="24" height="24"><use xlink:href="https://twitter.com/home"></use></svg></a>Twitter</li>
+             <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a>instagram</li>
+             <li class="ms-3"><a class="link-dark" href="https://www.linkedin.com/feed/"><svg class="bi" width="24" height="24"><use xlink:href="https://www.linkedin.com/feed/"></use></svg></a>linkedin</li>
+           </ul>
+         </div>
+       </footer>
+     </div>
+     </footer>
+<!-- End of Footer-->
+    
+</body>
+</html>

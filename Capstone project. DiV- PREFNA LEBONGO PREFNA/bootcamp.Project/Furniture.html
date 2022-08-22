@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Furnitures </title>
+     </Bootstrap><link rel="icon" type="image/x-icon" href="assets/favicon.ico"/> 
+      <!-- Bootstrap Js -->
+      <script src="bootstrap/js/bootstrap.bundle.js" defer></script>
+      <!-- Bootstrap Js -->
+     <!-- Bootstrap icons-->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+          <!-- Core theme CSS (includes Bootstrap) -->
+               <!--Bootstrap Css -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+                <!--Bootstrap Css -->
+    <link href="css/styles.css" rel="stylesheet" />
+</head>
+<style>
+    @import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+    *{
+        margin: 0;
+        padding: 0;
+        color: #454545;
+    }
+    h1{
+        width: 4%;
+        position: relative;
+        top: 60px;
+        left: 90px;
+        cursor: pointer;
+    }
+    h1::before{
+        content: attr(data-count);
+        color: white;
+        right: 16px;
+        font-size: 15px;
+        text-align: center;
+        top: -12px;
+        width: 20px;
+        height: 20px;
+        background: red;
+        border-radius: 50%;
+        opacity: 0;
+    }
+    h1.zero::before{
+        opacity: 1;
+    }
+    section{
+        margin: 100px auto;
+        width: 90%;
+        height: 400px;
+        display: flex;
+        justify-content: space-around;
+    }
+    section div{
+        width: 22%;
+        height: 92%;
+        background: #f5f5f5;
+        padding: 1%;
+        position: relative;
+    }
+    img{
+        width: 290px;
+        height: 186px;
+    }
+
+    p{
+        margin: 5px;
+    }
+
+    h6{
+        width: 50px;
+        padding: 5px;
+        margin: 10px;
+        font-size: 15px;
+    }
+
+    button{
+        padding: 5px;
+        background: yellow;
+        border: none;
+        outline: none;
+        font-weight: bold;
+        color:  #8b0e0e;
+        cursor: pointer;
+    }
+    section div span img{
+        width: 100%;
+        height: 100%;
+    }
+    section div:nth-child(1)>span.active{
+        animation: first 0.5s ease-in;
+        z-index: 2;
+        display: block;
+    }
+
+    section div:nth-child(2)>span.active{
+        animation: second 0.5s ease-in;
+        z-index: 2;
+        display: block;
+    }
+    section div:nth-child(3)>span.active{
+        animation: third 0.5s ease-in;
+        z-index: 2;
+        display: block;
+    }
+    section div:nth-child(4)>span.active{
+        animation: third 0.5s ease-in;
+        z-index: 2;
+        display: block;
+    }
+    @keyframes first{
+        to{
+            width: 40px;
+            height: 20px;
+            left: 1290px;
+            top: -70px;
+        }
+    }
+
+    @keyframes second{
+        to{
+            width: 40px;
+            height: 20px;
+            left: 950px;
+            top: -70px;
+        }
+    }
+    @keyframes third{
+        to{
+            width: 40px;
+            height: 20px;
+            left: 606px;
+            top: -70px;
+        }
+    }
+
+    @keyframes four{
+        to{
+            width: 40px;
+            height: 20px;
+            left: 265px;
+            top: -70px;
+        }
+    }
+    .select{
+        width: 60%;
+			height: 580px;
+			padding: 5%;
+			background: rgb(68, 54, 54);
+			position: absolute;
+			top: -1000px;
+			left: 20%;
+			transition: 0.5s;
+			overflow-y: auto;
+			margin: auto;
+
+    }
+    .select.display{
+        top: 20px;
+    }
+    .select div{
+            width: 100%;
+			height: 200px;
+			display: flex;
+			padding: 5px;
+			border: 1px solid rgb(172, 140, 140);
+			position: relative;
+			margin: 5px auto;
+    }
+    .select div img{
+            width: 300px;
+			height: 100%;
+    }
+
+    .select div p{
+			padding: 35px;
+			color: white;
+    }
+    .select div h6,
+		.select div button{
+			position: absolute;
+			left: 45%;
+			top: 50%;
+			color: white;
+		}
+        .select div button{
+			left: 60%;
+			top: 55%;
+		}
+		.select div span{
+			display: none;
+		}
+
+
+
+
+
+</style>
+
+<header>
+   <!-- Navigation -->  
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="index.2022.html">Price Controller</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.2022.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Aboutus2022.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="store.html.html">Stores</a></li>
+                    <li class="nav-item"><a class="nav-link" href="prices.html">Compare Prices</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact us</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="All categories.html">All Categories</a></li>
+                            <li><hr class="dropdown-divider" /></li>
+                            <li><a class="dropdown-item" href="popular items.html">Popular Items</a></li>
+                            <li><a class="dropdown-item" href="New items.html">New Arrivals</a></li>
+                        </ul>
+                    </li>
+                </ul>
+    
+               <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                  </form>
+                 <!--<form class="d-flex">
+                    <button class="btn btn-outline-dark" type="submit">
+                        <i class="bi-cart-fill me-1"></i>
+                        Cart
+                        <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                    </button>
+                </form>-->
+            </div>
+        </div>
+    </nav>
+    <header class="bg-dark py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="text-center text-white">
+                <h5 class="display-4 fw-bolder">Price Controller</h5>
+                <p class="lead fw-normal text-white-50 mb-0">Get Quality, Compare Prices and Payless</p>
+            </div>
+        </div>
+        </header>
+
+
+<body>
+	<h1><i class=" fa fa-shopping-cart"></i></h1>
+    
+	<section>
+		<div class="item">
+			<img src="images/din1.jpg">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, quo, modi ea voluptas tempora vero cumque incidunt eum animi</p>
+			<h6>Gh1500.89</h6>
+			<span></span>
+			<button>Add-cart</button>
+			
+		</div>
+		<div class="item">
+			<img src="images/chair6.jpg">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, quo, modi ea voluptas tempora vero cumque incidunt eum animi</p>
+			<h6>GH2500.89</h6>
+			<span></span>
+			<button>Add-cart</button>
+		</div>
+		<div class="item">
+			<img src="images/furn3.jpg">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, quo, modi ea voluptas tempora vero cumque incidunt eum animi</p>
+			<h6>GH550.89</h6>
+			<span></span>
+			<button>Add-cart</button>
+		</div>
+		<div class="item">
+			<img src="images/office2.jpg">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, quo, modi ea voluptas tempora vero cumque incidunt eum animi</p>
+			<h6>GH500.89</h6>
+			<span></span>
+			<button>Add-cart</button>
+		</div>
+    
+	</section>
+
+	<section>
+		<div class="item">
+			<img src="images/office1.jpg">
+			<p>Our office desk encourages you to create a study area that is productive and will help you see results.</p>
+			<h6>Ghc2,500</h6>
+			<span></span>
+			<button>Add-cart</button>
+			
+		</div>
+		<div class="item">
+			<img src="images/ward1.jpg">
+			<p>Give your bedroom a refreshing look with our wardrop.</p>
+			<h6>GH1,800</h6>
+			<span></span>
+			<button>Add-cart</button>
+		</div>
+		<div class="item">
+			<img src="images/chair4.jpg">
+			<p>Give your living room a refreshing look with a new sofa.</p>
+			<h6>GH1,200</h6>
+			<span></span>
+			<button>Add-cart</button>
+		</div>
+
+        <div class="item">
+			<img src="images/bed1.jpg">
+			<p>Sleep comfortably and dream big with our king size bed</p>
+			<h6>Ghc3,000</h6>
+			<span></span>
+			<button>Add-cart</button>
+			
+		</div>
+		<div class="item">
+			<img src="images/din2.jpg">
+			<p>Our quality dinning table will make you pay attention to your food and savour what you eat.</p>
+			<h6>GH1,500</h6>
+			<span></span>
+			<button>Add-cart</button>
+		</div>
+    
+	</section>
+
+    
+	<div class="select">
+		
+	</div>
+    <script src="script.js"></script>
+
+    <!-- Footer-->
+<footer class="py-5 bg-dark">
+    <footer style="background-color: gainsboro;">
+     
+     <div class="container">
+       <footer class="py-5">
+         <div class="row">
+           <div class="col-6 col-md-2 mb-3">
+             <h5>Price Controller</h5>
+             <ul class="nav flex-column">
+               <li class="nav-item mb-2"><a href="index.2022.html" class="nav-link p-0 text-muted">Home</a></li>
+               <li class="nav-item mb-2"><a href="All categories.html" class="nav-link p-0 text-muted">All categories</a></li>
+               <li class="nav-item mb-2"><a href="prices.html" class="nav-link p-0 text-muted">Compare prices</a></li>
+               <li class="nav-item mb-2"><a href="contact.html" class="nav-link p-0 text-muted">FAQs</a></li>
+             </ul>
+           </div>
+     
+           <div class="col-6 col-md-2 mb-3">
+             <h5>Payament Methods</h5>
+             <ul class="nav flex-column">
+               <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Net Banking</a></li>
+               <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Cash on delivery</a></li>
+               <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Debit/Credit Card</a></li>
+             </ul>
+           </div>
+     
+           <div class="col-6 col-md-2 mb-3">
+             <h5>Contact Us</h5>
+             <ul class="nav flex-column">
+               <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">+233502906607</a></li>
+               <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">pricecontroller@gmail.com</a></li>
+               <li class="nav-item mb-2"><a href="Aboutus2022.html" class="nav-link p-0 text-muted">About Us</a></li>
+             </ul>
+           </div>
+     
+           <div class="col-md-5 offset-md-1 mb-3">
+             <form>
+               <h5>Subscribe to our Price tracker and online shopping place</h5>
+               <p>Contoller your expenses on each purchase.</p>
+               <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+                 <label for="newsletter1" class="visually-hidden">Email address</label>
+                 <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
+                 <button class="btn btn-primary" type="button">Subscribe</button>
+               </div>
+             </form>
+           </div>
+         </div>
+     
+         <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+           <p>© 2022 Price Controller. All Rights Reserved.</p>
+           <ul class="list-unstyled d-flex">
+             <li class="ms-3"><a class="link-dark" href="https://twitter.com/home"><svg class="bi" width="24" height="24"><use xlink:href="https://twitter.com/home"></use></svg></a>Twitter</li>
+             <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a>instagram</li>
+             <li class="ms-3"><a class="link-dark" href="https://www.linkedin.com/feed/"><svg class="bi" width="24" height="24"><use xlink:href="https://www.linkedin.com/feed/"></use></svg></a>linkedin</li>
+           </ul>
+         </div>
+       </footer>
+     </div>
+     </footer>
+<!-- End of Footer-->
+</body>
+</html>
+
