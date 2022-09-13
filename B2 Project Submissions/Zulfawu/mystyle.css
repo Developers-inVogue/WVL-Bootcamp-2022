@@ -1,0 +1,68 @@
+body{
+    background-color: #F3F4FE;
+    color: black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+nav ul a
+{
+    display:inline;
+    text-decoration: none;
+    font-size:20px ;
+    font-family: verdana;
+    word-spacing: 60px;
+    padding: 15px 20px;
+
+}
+h3{
+    text-align: justify;
+    font-size: 20px;
+    color: #4c2827;
+    font-family: verdana;
+}
+
+.here{
+    border: 1px solid ;
+    background-color: #9b9fb9;
+    color: whitesmoke;
+    padding: 2px;
+    width: 150px;
+    height:35px;
+    
+
+}
+#book{
+    text-align:justify;
+    font-size: 25px;
+}
+
+p{
+    text-align: justify;
+    font-weight: normal;
+    font-size: medium;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+    
+img{
+    float:left;
+}
+h4{
+    font-size: 23px;
+}
+
+#concert{
+    border: 1px solid;
+    background-color: black;
+    color: white;
+}
+span{
+    border: 1 px solid;
+    padding:2px;
+    background-color: #000;
+    color:white;
+}
+h2{
+    font: 100px;
+    color: #000;
+    text-shadow: #000;
+}

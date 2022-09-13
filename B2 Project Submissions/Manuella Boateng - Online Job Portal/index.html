@@ -1,0 +1,201 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="job.css">
+    <!-- swiper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+    
+    <title>Job Search</title>
+</head>
+<body>
+    <!-- navbar -->
+    <nav class="navbar">
+        <h2 class="navbar-logo"><a href="#">JOB SEARCH</a></h2>
+        <div class="navbar-menu">
+            <a href="#Jobs">Jobs</a>
+            <a href="#companies">Companies</a>
+            <a href="#testimonial">Testimonial</a>
+            <a href="#blog">Blogs</a>
+            <a href="#">Sign In</a>
+        </div>
+        <div class="menu-toggle">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+
+    <!-- header -->
+    <header>
+        <h1 class="header-title">
+            FIND YOUR <br> PERFECT JOB
+
+        </h1>
+    </header>
+    <!-- search -->
+    <div class="search-wrapper">
+        <div class="search-box">
+            <div class="search-card">
+                <input class="search-input" type="text" placeholder="Job title or keywords">
+                <button class="search-button">Search</button>
+            </div>
+        </div>
+    </div>
+    <!-- filter box -->
+    <div class="filter-box">
+        <div class="filter-dropdown">
+            <select class="filter-select" id="job-level" name="job-level">
+                <option>Job Level</option>
+                <option>Entry</option>
+                <option>Mid-Senior</option>
+                <option>Director</option>
+            </select>
+            <select class="filter-select" name="job-function" id="job-function">
+                <option>Job Function</option>
+                <option>IT</option>
+                <option>Management</option>
+                <option>Education</option>
+            </select>
+            <select class="filter-select" name="employment" id="employment">
+                <option value="">Employment</option>
+                <option value=""> Internship</option>
+                <option value="">Part Time</option>
+                <option value="">Full Time</option>
+            </select>
+            <select class="filter-select" name="location" id="location">
+                <option value="">Location</option>
+                <option value="">Remote</option>
+                <option value="">US</option>
+                <option value="">UK</option>
+            </select>
+            <select class="filter-select" name="education" id="education">
+                <option value="">Education</option>
+                <option value="">High School</option>
+                <option value="">Bachelor's degree</option>
+                <option value="">Master's degree</option>
+            </select>
+        </div>
+        <div class="filter-chosen">
+            <div class="chosen-card">
+                Remote <i class="fas fa-times-circle"></i>
+            </div>
+            <div class="chosen-card">
+                Full time <i class="fas fa-times-circle"></i>
+            </div>
+            <div class="chosen-card">
+                Financial Tech <i class="fas fa-times-circle"></i>
+            </div>
+            <div class="chosen-card">
+                Entry Level <i class="fas fa-times-circle"></i>
+            </div>
+        </div>
+    </div>
+    <!-- job listings -->
+    <section class="job-list" id="jobs">
+ <div class="job-card">
+    <div class="job-name">
+        <img class="job-profile" src="images/facebook.png" alt="">
+        <div class="job-detail">
+            <h4>Facebook</h4>
+            <h3>Product Manager</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        </div>
+    </div>
+    <div class="job-label">
+        <a class="label-a" href="#">HTML</a>
+        <a class="label-b" href="#">CSS</a>
+        <a class="label-c" href="#">Javascript</a>
+    </div>
+    <div class="job-posted">
+        Posted 2 mins ago
+    </div>
+ </div>
+
+ <div class="job-card">
+    <div class="job-name">
+        <img class="job-profile" src="images/google.png" alt="">
+        <div class="job-detail">
+            <h4>Google</h4>
+            <h3>Business Development</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        </div>
+    </div>
+    <div class="job-label">
+        <a class="label-a" href="#">HTML</a>
+        <a class="label-b" href="#">CSS</a>
+        <a class="label-c" href="#">Javascript</a>
+    </div>
+    <div class="job-posted">
+        Posted 30 mins ago
+    </div>
+ </div>
+ <div class="job-card">
+    <div class="job-name">
+        <img class="job-profile" src="images/twitter.png" alt="">
+        <div class="job-detail">
+            <h4>Twitter</h4>
+            <h3>Digital Marketing</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        </div>
+    </div>
+    <div class="job-label">
+        <a class="label-a" href="#">HTML</a>
+        <a class="label-b" href="#">CSS</a>
+        <a class="label-c" href="#">Javascript</a>
+    </div>
+    <div class="job-posted">
+        Posted an hour ago
+    </div>
+ </div>
+ <button class="job-more">More</button>
+    </section>
+
+    <!-- join -->
+    <section class="join">
+        <div class="join-detail">
+            <h1 class="section-title">START YOUR NEW JOB WITH US</h1>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat vel nisi deleniti, 
+                laborum nihil expedita cupiditate aliquam consectetur perferendis fugit error vitae 
+                dolores illo hic, non officiis esse nostrum quia?</p>
+        </div>
+        <button class="join-button">Join Now</button>
+    </section>
+
+    <!-- featured company -->
+    <section class="featured" id="companies">
+        <h1 class="section-title">Featured Companies</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit aliquid odio eos 
+            illum laborum a, sequi totam vitae debitis cupiditate autem quisquam similique 
+            corrupti consequuntur dignissimos dolores dicta atque cumque.</p>
+            <div class="featured-wrapper">
+                <div class="featured-card">
+                    <img class="featured-image" src="images/ebay.png" alt="">
+                    <p>Ebay</p>
+                    <button class="featured-button"> View 2 jobs</button>
+                </div>
+                <div class="featured-card">
+                    <img class="featured-image" src="images/tik-tok.png" alt="">
+                    <p>TikTok</p>
+                    <button class="featured-button"> View 1 job</button>
+                </div>
+                <div class="featured-card">
+                    <img class="featured-image" src="images/facebook.png" alt="">
+                    <p>Facebook</p>
+                    <button class="featured-button"> View 3 jobs</button>
+                </div>
+                <div class="featured-card">
+                    <img class="featured-image" src="images/google.png" alt="">
+                    <p>Google</p>
+                    <button class="featured-button"> View 4 jobs</button>
+                </div>
+            </div>
+    </section>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="job.js"></script>
+</body>
+</html>

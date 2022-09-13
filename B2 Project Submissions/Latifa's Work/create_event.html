@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <title>Abena's Events</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" id="viewport" content="width=device-width" , initial -scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Abena's Events</a>
+            <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse"
+                data-target="#main-navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="main-navigation">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="create_event.html">Create Event</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="book_event.html">Book Event</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-header header container-fluid">
+        <div class="overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="offset-md-3 col-md-6">
+                        <div class="event-form">
+                            <h1>Create Your Event</h1>
+                            <form>
+                                <div class="mb-3">
+                                    <label for="event_title" class="form-label text-white">Event Title</label>
+                                    <input type="text" name="event_title" id="event_title" placeholder="Event Title"
+                                        class="form-control" />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="venue" class="form-label text-white">Venue</label>
+                                    <input type="text" name="venue" id="venue" placeholder="Venue"
+                                        class="form-control" />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="date" class="form-label text-white">Date</label>
+                                    <input type="date" name="date" id="date" placeholder="Date" class="form-control" />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="start_time" class="form-label text-white">Start Time</label>
+                                    <input type="time" name="start_time" id="start_time" placeholder="Start Time"
+                                        class="form-control" />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="end_time" class="form-label text-white">Start Time</label>
+                                    <input type="time" name="end_time" id="end_time" placeholder="End Time"
+                                        class="form-control" />
+                                </div>
+                                <input type="submit" value="Save Event" class="btn btn-primary" onclick="alert('Your event has been successfully added!')"/>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <h6 class="text-uppercase font-weight-bold">Abena's Events</h6>
+                    <img src="logo-raw.png" height="50px" width="50px" alt="my logos">
+                </div>
+
+                <div class="col-md-4 col-sm-12">
+                    <h6 class="text-uppercase font-weight-bold">Location</h6>
+                    <p>Nyaniba Estates</p>
+                    <p>Accra</p>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <h6 class="text-uppercase font-weight-bold">Contact Us</h6>
+                    <p>Email: latifattsuleman@gmail.com</p>
+                    <p>Phone: +233269005939</p>
+                </div>
+
+                <div class="footer-copyright text-center">© 2022 Copyright: Latifatu Sulemana.</div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+        integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+        crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
