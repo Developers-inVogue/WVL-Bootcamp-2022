@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "site": "englishpro",
+    "public": "english-pro",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
