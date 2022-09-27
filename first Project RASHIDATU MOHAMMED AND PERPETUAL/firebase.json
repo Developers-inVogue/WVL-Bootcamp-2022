@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "site": "tiny-hug",
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
