@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "site": "francophone-journey",
+    "public": "francophone-journey",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
