@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "site": "awesome-budget-planner",
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
