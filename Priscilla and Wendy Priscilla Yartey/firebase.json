@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "site": "awesome-hostel",
+    "public": "Hostel",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
