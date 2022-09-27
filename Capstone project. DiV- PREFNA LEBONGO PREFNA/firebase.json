@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "site": "price-controller",
+    "public": "bootcamp.Project",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
